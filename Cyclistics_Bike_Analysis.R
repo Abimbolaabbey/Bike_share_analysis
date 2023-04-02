@@ -32,7 +32,6 @@ X202107_divvy_tripdata <- read_excel("C:/Users/maxla/Downloads/202107-divvy-trip
 ## STEP 2: WRANGLE DATA AND COMBINE INTO A SINGLE FILE
 
 # Compare column names each of the files
-# While the names don't have to be in the same order, they DO need to match perfectly before 
 
 colnames(X202107_divvy_tripdata)
 colnames(X202112_divvy_tripdata)
@@ -87,6 +86,7 @@ all_trips<-all_trips%>%
 ### STEP 3: CLEAN UP AND ADD DATA TO PREPARE FOR ANALYSIS
 
 # Inspect the new table that has been created
+
 colnames(all_trips)  #List of column names
 nrow(all_trips)  #How many rows are in data frame?
 dim(all_trips)  #Dimensions of the data frame?
@@ -160,7 +160,7 @@ all_trips_v2$day_of_week <- ordered(all_trips_v2$day_of_week, levels=c("Sunday",
 aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = mean)
 
 # analyze ridership data by type and weekday.  To use the wday function, lets make sure we install the lubridate package
-install.packages("lubridate")
+
 library(lubridate)
 
 all_trips_v2 %>% 
@@ -207,7 +207,6 @@ all_trips_v2 %>%
   arrange(member_casual, weekday)  %>% 
   ggplot(aes(x = weekday, y = average_duration)) +
   geom_col(position = "dodge")+labs(color ="member_casual")+ scale_colour_manual(values=c("casual"= "blue", "member" = "white"))
-
 
 
 #Download as Csv file for further analysis
