@@ -222,13 +222,13 @@ write.csv(all_trips, file = "All_Trips_data.csv")
 ![](Trips_by_days_of_the_week.png)
 
 
-##Observations:
+## Observations:
 
 Based on my analysis, it is clear that the majority of the trips are taken by casual riders, while members take a much smaller number of trips. 
 
 However, it is also evident that members tend to take trips more consistently throughout the week, while casual riders tend to take more trips on weekends.
 
-##Recommendations:
+## Recommendations:
 
 * To convert casual riders into members, Cyclistics could consider offering incentives or discounts to casual riders who frequently use the service.
  This could be done by providing them with an opportunity to become members at a reduced rate or providing them with exclusive offers that are not available to casual  riders.
