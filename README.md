@@ -11,10 +11,10 @@ Cyclistics bike share project with R
 
 ##### STEP 1: COLLECT DATA
 
-install.packages("tidyverse")
-library(lubridate)
-library(ggplot2)
-library(readxl)
+* install.packages("tidyverse")
+* library(lubridate)
+* library(ggplot2)
+* library(readxl)
 
 ##### Upload Divvy datasets (xlsx files) here
 
