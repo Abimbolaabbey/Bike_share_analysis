@@ -36,7 +36,6 @@ X202107_divvy_tripdata <- read_excel("C:/Users/maxla/Downloads/202107-divvy-trip
 ##### STEP 2: WRANGLE DATA AND COMBINE INTO A SINGLE FILE
 
 * Compare column names each of the files
-* While the names don't have to be in the same order, they DO need to match perfectly before 
 
 colnames(X202107_divvy_tripdata)
 colnames(X202112_divvy_tripdata)
@@ -88,16 +87,28 @@ all_trips<-all_trips%>%
 
 * We've reduced the columns to 11
 
+
 ##### STEP 3: CLEAN UP AND ADD DATA TO PREPARE FOR ANALYSIS
 
 * Inspect the new table that has been created
 
-colnames(all_trips)  #List of column names
-nrow(all_trips)  #How many rows are in data frame?
-dim(all_trips)  #Dimensions of the data frame?
-head(all_trips)  #See the first 6 rows of data frame.  Also tail(all_trips)
-str(all_trips)  #See list of columns and data types (numeric, character, etc)
-summary(all_trips)  #Statistical summary of data. Mainly for numerics
+###### List of column names
+* colnames(all_trips)
+  
+###### How many rows are in data frame?
+* nrow(all_trips)  
+
+###### Dimensions of the data frame?
+* dim(all_trips) 
+
+###### See the first 6 rows of data frame.  Also tail(all_trips)
+* head(all_trips) 
+
+###### See list of columns and data types (numeric, character, etc)
+* str(all_trips) 
+
+###### Statistical summary of data. Mainly for numerics
+* summary(all_trips)  
 
 * Add columns that list the date, month, day, and year of each ride
 * This will allow us to aggregate ride data for each month, day, or year ... before completing these operations we could only aggregate at the ride level
@@ -115,12 +126,14 @@ all_trips$ride_length <- difftime(all_trips$ended_at,all_trips$started_at)
 colnames(all_trips)
 
 * Convert "ride_length" from Factor to numeric so we can run calculations on the data
+
 is.factor(all_trips$ride_length)
 all_trips$ride_length <- as.numeric(as.character(all_trips$ride_length))
 is.numeric(all_trips$ride_length)
 
 
 str(all_trips)
+
 
 * Dropped any occasional bad data(negative datas) and created a new Dataframe
 
@@ -130,6 +143,7 @@ all_trips_v2 <- all_trips[!(all_trips$ride_length<0),]
 
 all_trips<-all_trips%>%
   select(-c(ride_lenght))
+
 
 
 
@@ -176,21 +190,12 @@ all_trips_v2 %>%
   arrange(member_casual, weekday)								# sorts
 
 * Let's visualize the number of rides by rider type
-* Lets install ggplot2
+* Lets load ggplot2
 
 library(ggplot2)
 
-all_trips_v2 %>% 
-  mutate(weekday = wday(started_at, label = TRUE)) %>% 
-  group_by(member_casual, weekday) %>% 
-  summarise(number_of_rides = n()
-            ,average_duration = mean(ride_length)) %>% 
-  arrange(member_casual, weekday)  %>% 
-  ggplot(aes(x = weekday, y = number_of_rides, fill = member_casual)) +
-  geom_col(position = "dodge")
-
-
 * Let's create a visualization for average duration
+
 all_trips_v2 %>% 
   mutate(weekday = wday(started_at, label = TRUE)) %>% 
   group_by(member_casual, weekday) %>% 
