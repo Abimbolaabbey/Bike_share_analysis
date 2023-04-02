@@ -1,7 +1,7 @@
 # Bike_share_analysis
 Cyclistics bike share project with R
 
-   ![](Bike_sharing.png)
+   ![](Bike.png)
 
 * Install required packages
 * tidyverse for data import and wrangling
