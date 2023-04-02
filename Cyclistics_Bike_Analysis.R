@@ -198,6 +198,7 @@ all_trips_v2 %>%
 
 
 ## trying out new colors
+
 all_trips_v2 %>% 
   mutate(weekday = wday(started_at, label = TRUE)) %>% 
   group_by(member_casual, weekday) %>% 
@@ -206,13 +207,6 @@ all_trips_v2 %>%
   arrange(member_casual, weekday)  %>% 
   ggplot(aes(x = weekday, y = average_duration)) +
   geom_col(position = "dodge")+labs(color ="member_casual")+ scale_colour_manual(values=c("casual"= "blue", "member" = "white"))
-
-
-
-
-
-
-
 
 
 
