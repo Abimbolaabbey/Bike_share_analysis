@@ -1,7 +1,7 @@
 # Bike_share_analysis
 Cyclistics bike share project with R
 
-
+   ![](Bike_sharing.png)
 
 * Install required packages
 * tidyverse for data import and wrangling
@@ -202,11 +202,26 @@ all_trips_v2 %>%
 
 
 
+![](Casual_vs_members.png)
+
+
 * Download as Csv file for further analysis
 
 counts <- aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = mean)
 
 write.csv(all_trips, file = "All_Trips_data.csv")
+
+
+
+## More Visuals with Power Bi
+
+![](Total_trips.png)
+
+![](Total_trips_by_casuals_and_members.png)
+
+![](Trips_by_days_of_the_week.png)
+
+
 
             
 
